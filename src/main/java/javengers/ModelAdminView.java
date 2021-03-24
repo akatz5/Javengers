@@ -31,8 +31,6 @@ public class ModelAdminView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addFileActionPerformed(e);
-                fileList.setModel(model);
-                
             }
         });
         removeFileButton.addActionListener(new ActionListener() {
@@ -61,13 +59,13 @@ public class ModelAdminView extends JFrame {
         addFileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Text File only", "txt"));
         addFileChooser.setAcceptAllFileFilterUsed(true);
         int res = addFileChooser.showOpenDialog(this);
-        if(res == JFileChooser.APPROVE_OPTION){
+        if(res == JFileChooser.APPROVE_OPTION) {
 
             File f = addFileChooser.getSelectedFile();
             String fileInfo = f.getName();
             model.addElement(addFileChooser.getSelectedFile().getName());
-
-        }
+            fileList.setModel(model);
+        };
     }
 
     // code for this method written by Kthan Graham
@@ -76,10 +74,8 @@ public class ModelAdminView extends JFrame {
         fileList.remove(n);
     }
 
-
     public void updateListActionPerformed(java.awt.event.ActionEvent e) {
         fileList.setModel(model);
     }
-
 
 }

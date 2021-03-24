@@ -32,11 +32,14 @@
               </grid>
             </constraints>
             <properties>
+              <fixedCellHeight value="100"/>
+              <fixedCellWidth value="5"/>
+              <focusCycleRoot value="false"/>
               <font name="Consolas" size="8" style="0"/>
               <model/>
             </properties>
             <clientProperties>
-              <List.isFileList class="java.lang.Boolean" value="true"/>
+              <List.isFileList class="java.lang.Boolean" value="false"/>
             </clientProperties>
           </component>
           <component id="8db2a" class="javax.swing.JLabel" binding="statusLabel">
