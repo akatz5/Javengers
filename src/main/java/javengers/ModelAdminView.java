@@ -32,7 +32,7 @@ public class ModelAdminView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addFileActionPerformed(e);
                 fileList.setModel(model);
-                fileList.updateUI();
+                
             }
         });
         removeFileButton.addActionListener(new ActionListener() {
@@ -78,7 +78,7 @@ public class ModelAdminView extends JFrame {
 
 
     public void updateListActionPerformed(java.awt.event.ActionEvent e) {
-        fileList.updateUI();
+        fileList.setModel(model);
     }
 
 
