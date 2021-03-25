@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="aea10" binding="adminPanel" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="aea10" binding="adminPanel" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -16,50 +16,6 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="13c7b" class="javax.swing.JLabel" binding="nameLabel">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <font style="2"/>
-              <text value="File Name"/>
-            </properties>
-          </component>
-          <component id="3bc29" class="javax.swing.JList" binding="fileList">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="50" height="100"/>
-              </grid>
-            </constraints>
-            <properties>
-              <fixedCellHeight value="100"/>
-              <fixedCellWidth value="5"/>
-              <focusCycleRoot value="false"/>
-              <font name="Consolas" size="8" style="0"/>
-              <model/>
-            </properties>
-            <clientProperties>
-              <List.isFileList class="java.lang.Boolean" value="false"/>
-            </clientProperties>
-          </component>
-          <component id="8db2a" class="javax.swing.JLabel" binding="statusLabel">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <font style="2"/>
-              <text value="File Status"/>
-            </properties>
-          </component>
-          <component id="f2556" class="javax.swing.JLabel" binding="dateLabel">
-            <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <font style="2"/>
-              <text value="File Date"/>
-            </properties>
-          </component>
           <component id="fd37f" class="javax.swing.JLabel" binding="adminTitle">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -71,7 +27,7 @@
           </component>
           <component id="fe3fa" class="javax.swing.JButton" binding="addFileButton" default-binding="true">
             <constraints>
-              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Add file..."/>
@@ -79,7 +35,7 @@
           </component>
           <component id="8760b" class="javax.swing.JButton" binding="removeFileButton" default-binding="true">
             <constraints>
-              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Remove file..."/>
@@ -87,17 +43,25 @@
           </component>
           <component id="707fe" class="javax.swing.JButton" binding="updateListButton" default-binding="true">
             <constraints>
-              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Update list..."/>
+              <text value="Update index"/>
             </properties>
           </component>
-          <hspacer id="18b35">
+          <scrollpane id="d935a">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-          </hspacer>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="52ed9" class="javax.swing.JTable" binding="tableShown">
+                <constraints/>
+                <properties/>
+              </component>
+            </children>
+          </scrollpane>
         </children>
       </grid>
     </children>
