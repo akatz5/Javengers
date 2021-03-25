@@ -2,11 +2,9 @@ package javengers;
 // @author Ann Katz;
 import javax.swing.*;
 
-public class View extends JFrame{
+public class UserView extends JFrame{
     private JPanel mainPanel;
-    private JTabbedPane tabbedPane;
     private JLabel titleLabel;
-    private JPanel adminPanel;
     private JPanel userViewPanel;
     private JTextField searchTextField;
     private JLabel searchByLabel;
@@ -16,18 +14,8 @@ public class View extends JFrame{
     private JButton searchButton;
     private JList filesList;
     private JLabel filesLabel;
-    private JLabel statusLabel;
-    private JLabel dateLabel;
-    private JLabel nameLabel;
-    private JList nameList;
-    private JList statusList;
-    private JList dateList;
-    private JLabel adminTitle;
-    private JButton addFileButton;
-    private JButton removeFileButton;
-    private JButton updateListButton;
 
-    public View(String title){
+    public UserView(String title){
         super(title);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,7 +24,7 @@ public class View extends JFrame{
     }
 
     public static void main(String[] args){
-        JFrame frame = new View("Index Search Engine");
+        JFrame frame = new UserView("Index Search Engine");
         frame.setVisible(true);
     }
 
