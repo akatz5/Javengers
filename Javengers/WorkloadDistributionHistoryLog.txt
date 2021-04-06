@@ -1,0 +1,23 @@
+Work Divison History Log
+Javengers (Kthan Graham, Yasmin Washington, Waylan Corey, Annie Katz)
+COP2085C-48327
+
+This document intends to serve as a log of work division, as typically one person pushes to the
+main branch for the least complex GitHub merge.
+Work created by each member goes into the main branch, and some independently-developed code
+resides in each member's branch/fork.
+
+Project 3:
+Each team member created their own GUI and we discussed the pros and cons of each. 
+Ultimately, one was chosen, but input for the code was provided by each member.
+Meetings held: 3
+Workload distribution: Even
+
+Project 4:
+Each team member works to create the maintenance window using JList.
+Kthan provided some setup code to get the team started.
+We held a meeting to troubleshoot populating the JLists, as we each had trouble on our own.
+Ultimately, we decided we would each try different methods of population, and we settled on 
+the method using a JTable over a JList. 
+Meetings held: 3
+Workload distribution: Even
