@@ -6,7 +6,10 @@ import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
+import javax.swing.RowFilter;
+import javax.swing.JFrame;
+import javax.swing.JTable;
+
 
 
 public class UserView extends JFrame {
@@ -22,6 +25,8 @@ public class UserView extends JFrame {
     private JLabel filesLabel;
     private JTable tableShown;
     DefaultTableModel model = (DefaultTableModel) tableShown.getModel();
+
+
 
     public UserView(String title) throws IOException, ClassNotFoundException {
         super(title);
@@ -57,16 +62,35 @@ public class UserView extends JFrame {
             DefaultTableModel model = (DefaultTableModel) tableShown.getModel();
             model.setColumnCount(1);
             model.setColumnIdentifiers(new Object[]{"File Name"});
+            //--------------------------------and button------------------------------------------
+            if( andRadioButton.isSelected()) {
+                Object[] tableLines = br.lines().toArray();
+                String textSearched = "";
+                String search = searchTextField.getText();
+                for (int i = 0; i < tableLines.length; i++) {
+                    String line = tableLines[i].toString();
+                    if (line.contains(search)) {
+                        Object n = line;
+                        model.addRow(new Object[]{n});
+                    }
+                }
+            }
+            //------------------------------or button---------------------------------------------
+            if( orRadioButton.isSelected()){
+                newFilter();
 
-
-            Object[] tableLines = br.lines().toArray();
-            String textSearched = "";
-            String search = searchTextField.getText();
-            for (int i = 0; i < tableLines.length; i++) {
-                String line = tableLines[i].toString();
-                if (line.contains(search)) {
-                    Object n = line;
-                    model.addRow(new Object[]{n});
+            }
+            //---------------------------------phrase button -------------------------------------
+            if ( phraseRadioButton.isSelected()){
+                Object[] tableLines = br.lines().toArray();
+                String textSearched = "";
+                String search = searchTextField.getText();
+                for (int i = 0; i < tableLines.length; i++) {
+                    String line = tableLines[i].toString();
+                    if (line.contains(search)) {
+                        Object n = line;
+                        model.addRow(new Object[]{n});
+                    }
                 }
             }
 
@@ -75,7 +99,19 @@ public class UserView extends JFrame {
         }
 
     }
+    //--------------------sorter function for or search--------------------------
+    private void newFilter() {
+        tableShown.setAutoCreateRowSorter(true);
 
+        RowFilter<tableShown, Object> rf = null;
+        //If current expression doesn't parse, don't update.
+        try {
+            rf = RowFilter.regexFilter(searchTextField.getText(), 0);
+        } catch (java.util.regex.PatternSyntaxException e) {
+            return;
+        }
+        tableShown.setRowFilter(rf);
+    }
 
 }
 
