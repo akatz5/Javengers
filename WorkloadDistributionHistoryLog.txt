@@ -21,3 +21,8 @@ Ultimately, we decided we would each try different methods of population, and we
 the method using a JTable over a JList. 
 Meetings held: 3
 Workload distribution: Even
+
+Project 5:
+Each team member worked independently on source code, but we each collaborated via Discord.
+Meetings held: 2
+Workload Distribution: Even
