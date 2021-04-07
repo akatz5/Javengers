@@ -2,15 +2,12 @@ package javengers;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
-import javax.swing.text.TableView;
-import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import java.util.*;
-
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 
 public class ModelAdminView extends JFrame {
@@ -23,8 +20,7 @@ public class ModelAdminView extends JFrame {
     private JTable tableShown;
     String n;
     String s;
-    DefaultTableModel model = new DefaultTableModel();
-
+    static DefaultTableModel model = new DefaultTableModel();
 
     public ModelAdminView(String title) {
         super(title);
@@ -32,9 +28,9 @@ public class ModelAdminView extends JFrame {
         this.setContentPane(mainPanel);
         this.pack();
 
-       model.setColumnCount(2);
-       model.setColumnIdentifiers(new Object[] {"File Name", "File Status"});
-       tableShown.setModel(model);
+        model.setColumnCount(2);
+        model.setColumnIdentifiers(new Object[]{"File Name", "File Status"});
+        tableShown.setModel(model);
 
 
         addFileButton.addActionListener(new ActionListener() {
@@ -54,7 +50,11 @@ public class ModelAdminView extends JFrame {
         updateListButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                updateListActionPerformed(e);
+                try {
+                    updateListActionPerformed(e);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
             }
         });
 
@@ -73,6 +73,22 @@ public class ModelAdminView extends JFrame {
     public static void main(String[] args) {
         JFrame frame = new ModelAdminView("Maintenance: Search Engine");
         frame.setVisible(true);
+        readDatabase(model);
+
+    }
+
+    public static void readDatabase(DefaultTableModel model) {
+        try {
+            //the file path
+            File database = new File("./database.txt");
+            //if the file not exist create one
+            if (!database.exists()) {
+                database.createNewFile();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -90,30 +106,42 @@ public class ModelAdminView extends JFrame {
             n = f.getName();
             s = "In file index";
 
-            model.addRow(new Object[]{n,s});
+            model.addRow(new Object[]{n, s});
         }
         ;
 
     }
 
-   public void removeFileActionPerformed(java.awt.event.ActionEvent e) {
+    public void removeFileActionPerformed(java.awt.event.ActionEvent e) {
         s = "Removed. Update to refresh";
         int row = tableShown.getSelectedRow();
         n = model.getValueAt(row, 0).toString();
         model.removeRow(row);
-        model.addRow(new Object[]{n,s});
 
 
+    }
 
-   }
-   public void updateListActionPerformed(java.awt.event.ActionEvent e) {
-        int max = model.getRowCount();
-       for(int row = 0; row <= max; ++row) {
-           if (model.getValueAt(row, 1).toString() == "Removed. Update to refresh"){
-               model.removeRow(row);
-           }
-       }
-   }
 
+    public void updateListActionPerformed(java.awt.event.ActionEvent e) throws IOException {
+
+        File database = new File("./database.txt");
+        FileWriter fw = new FileWriter(database.getAbsoluteFile());
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        for(int i = 0; i < model.getRowCount(); i++){
+            //loop for jtable column
+            for(int j = 0; j < model.getColumnCount(); j++){
+                n = (model.getValueAt(i, j)+"\n");
+                n = n.replace("In file index", "");
+                bw.write(n);
+            }
+        }
+        //close BufferedWriter
+        bw.close();
+        //close FileWriter
+        fw.close();
+    }
 }
+
+
 
